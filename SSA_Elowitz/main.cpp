@@ -18,14 +18,8 @@
  
  chemical reactions
  
- Autocatalytic Reaction Cycle
- 
- X0 + X1 -- c0 --> X1 + X1
- X1 + X2 -- c1 --> X2 + X2
- X2 + X0 -- c2 --> X0 + X0
- 
- 
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -60,17 +54,7 @@ void init(int x[], int u1[N], int u2[N][M]){
     x[3] = 0;
     x[4] = 0;
     x[5] = 0;
-//    // reaction rates
-//    c[0] = 0.1;
-//    c[1] = 0.1;
-//    c[2] = 0.1;
     
-    // data structure for updating the number of chemical species
-    // u1[i][j]: i=reaction number, j=chemical species
-    // each element is corresponding to the element of u2 array
-//    for(int i = 0; i <= N; i++ ){
-//        u1[i]=i;
-//        }
     
     u2[0][0] = 1;
     u2[1][1] = 1;
@@ -97,15 +81,7 @@ void init(int x[], int u1[N], int u2[N][M]){
     u1[9] = 3;
     u1[10] = 4;
     u1[11] = 5;
-   // u2[N]={}
-    // u2[i][j]: i=reaction number, j=in(de)crement of chemical species
-   
-//    u2[0][0] = -1;
-//    u2[0][1] =  1;
-//    u2[1][0] = -1;
-//    u2[1][1] =  1;
-//    u2[2][0] = -1;
-//    u2[2][1] =  1;
+    
     
 }
 
@@ -114,23 +90,20 @@ void update_p(double p[], int x[]){
     p[0] = alpha/(1+pow(x[5],n))+alpha0; //m1 transcription
     p[1] = alpha/(1+pow(x[3],n))+alpha0; //m2 transcription
     p[2] = alpha/(1+pow(x[4],n))+alpha0; //m3 transcription
-    p[3] = x[0];
-    p[4] = x[1];
-    p[5] = x[2];
-    p[6] = beta*x[0];
-    p[7] = beta*x[1];
-    p[8] = beta*x[2];
-    p[9] = beta*x[3];
-    p[10] = beta*x[4];
-    p[11] = beta*x[5];
+    p[3] = x[0];                         //m1 decay
+    p[4] = x[1];                         //m2 decay
+    p[5] = x[2];                         //m3 decay
+    p[6] = beta*x[0];                    // m1->p1 translation
+    p[7] = beta*x[1];                    // m2->p2 translation
+    p[8] = beta*x[2];                    // m3->p3 translation
+    p[9] = beta*x[3];                    // p1 decay
+    p[10] = beta*x[4];                   // p2 decay
+    p[11] = beta*x[5];                   // p3 decay
     
 }
 
 
-/////////////////////////////////////////////////////////////
-//
-// functions
-//
+// randomly select a reaction;
 int select_reaction(double p[], int pn, double sum_propencity, double r){
     int reaction = -1;
     double sp = 0.0;
@@ -147,6 +120,8 @@ int select_reaction(double p[], int pn, double sum_propencity, double r){
     return reaction;
 }
 
+// update for x based on selected reaction;
+// input for calculating p;
 void update_x(int x[], int u1[N], int u2[N][M], int reaction){
     
     x[u1[reaction]] += u2[reaction][u1[reaction]];
@@ -168,7 +143,7 @@ void output(FILE *out, double t, int x[], int xn){
 }
 
 
-
+// sum the array values;
 double sum(double a[], int nn){
     int i;
     double s=0.0;
@@ -188,8 +163,6 @@ int main(void){
     
     init(x, u1, u2);
     
-    //srand(SEED);
-    
     FILE *out=fopen(OUTFILE, "w");
     
     // main loop
@@ -203,10 +176,10 @@ int main(void){
         update_p(p, x);
         sum_propencity = sum(p, N);
         
-//        random_device rd;  //Will be used to obtain a seed for the random number engine
-//        mt19937 gen0(rd()); //Standard mersenne_twister_engine seeded with rd()
-//        uniform_real_distribution<> dis(0, 1);
-//        double tausum = dis(gen0);
+        //        random_device rd;  //Will be used to obtain a seed for the random number engine
+        //        mt19937 gen0(rd()); //Standard mersenne_twister_engine seeded with rd()
+        //        uniform_real_distribution<> dis(0, 1);
+        //        double tausum = dis(gen0);
         // sample tau
         if(sum_propencity > 0){
             tau = -log((double)rand()/INT_MAX) / sum_propencity;
