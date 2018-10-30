@@ -1,0 +1,643 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29610,        635]
+NotebookOptionsPosition[     29158,        615]
+NotebookOutlinePosition[     29516,        631]
+CellTagsIndexPosition[     29473,        628]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Demensionless", " ", "differential", " ", "equation"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "s", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{"NDSolve", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"m1", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"m1", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"p3", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"m2", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"m2", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"p1", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"m3", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"m3", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"p2", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"p1", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", "beta"}], " ", "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"p1", "[", "t", "]"}], "-", 
+               RowBox[{"m1", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"p2", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", "beta"}], "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"p2", "[", "t", "]"}], "-", 
+               RowBox[{"m2", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"p3", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", "beta"}], "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"p3", "[", "t", "]"}], "-", 
+               RowBox[{"m3", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"m1", "[", "0", "]"}], "==", "M10"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"m2", "[", "0", "]"}], "==", "M20"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"m3", "[", "0", "]"}], "==", "M30"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p1", "[", "0", "]"}], "==", "P10"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p2", "[", "0", "]"}], "==", "P20"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p3", "[", "0", "]"}], "==", "P30"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"m1", "[", "t", "]"}], ",", 
+           RowBox[{"m2", "[", "t", "]"}], ",", 
+           RowBox[{"m3", "[", "t", "]"}], ",", 
+           RowBox[{"p1", "[", "t", "]"}], ",", 
+           RowBox[{"p2", "[", "t", "]"}], ",", 
+           RowBox[{"p3", "[", "t", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "totaltime"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"Plot", " ", "and", " ", "convert", " ", "unit", " ", "back"}],
+        "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Switch", "[", 
+       RowBox[{"plotNumber", ",", "\"\<plot1\>\"", ",", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"p1", "[", "t", "]"}], "*", "40"}], "/.", "s"}], "]"}],
+             ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"p2", "[", "t", "]"}], "*", "40"}], "/.", "s"}], "]"}],
+             ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"p3", "[", "t", "]"}], "*", "40"}], "/.", "s"}], 
+             "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "totaltime"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"0", ",", "totaltime"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "6000"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Red"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Orange"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Blue"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+          RowBox[{"FrameLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<time(min)\>\"", ",", "20"}], "]"}], ",", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Proteins per cell (\!\(\*SubscriptBox[\(Lacl\), \(\(1\)\(,\
+\)\(\\\ \)\)]\)\!\(\*SubscriptBox[\(TetR\), \
+\(2\)]\),\!\(\*SubscriptBox[\(Cl\), \(3\)]\))\>\"", ",", "20"}], "]"}]}], 
+            "}"}]}], ",", 
+          RowBox[{"FrameTicks", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"Automatic", ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"#", ",", 
+                   RowBox[{"2.89", " ", "#"}]}], "}"}], "&"}], "/@", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", 
+                  RowBox[{"totaltime", "/", "2"}], ",", "totaltime"}], 
+                 "}"}]}], ",", "Automatic"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"1000", ",", "600"}], "}"}]}]}], "]"}], " ", ",", 
+        "\[IndentingNewLine]", "\"\<plot\>\"", ",", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"Evaluate", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p1", "[", "t", "]"}], ",", 
+              RowBox[{"p2", "[", "t", "]"}], ",", 
+              RowBox[{"p3", "[", "t", "]"}]}], "}"}], "/.", "s"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "totaltime"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<\!\(\*SubscriptBox[\(Lacl\), \(\(1\)\(,\)\(\\\ \)\)]\)\>\"", 
+             ",", "\"\<\!\(\*SubscriptBox[\(TetR\), \(2\)]\)\>\"", ",", 
+             "\"\<\!\(\*SubscriptBox[\(Cl\), \(3\)]\)\>\""}], "}"}]}], ",", 
+          RowBox[{"ViewPoint", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"100", ",", "100", ",", "100"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{"Thick", ",", "Red"}], "}"}], "}"}]}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"600", ",", "600"}], "}"}]}], ",", 
+          RowBox[{"ImagePadding", "\[Rule]", "35"}]}], "]"}]}], "]"}]}]}], 
+    "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"plotNumber", ",", "\"\<plot1\>\"", ",", "\"\<plot\>\""}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\"\<plot1\>\"", "\[Rule]", "\"\<time\>\""}], ",", 
+       RowBox[{"\"\<plot\>\"", "\[Rule]", "\"\<phase space\>\""}]}], "}"}]}], 
+    "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"totaltime", ",", 
+       RowBox[{"1000", "/", "2.89"}], ",", "\"\<maxtime\>\""}], "}"}], ",", 
+     " ", "0.0001", ",", "5000", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<parameters\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"alpha", ",", "216", ",", "\"\<alpha\>\""}], "}"}], ",", " ", 
+     "0.0001", ",", "400.0", ",", ".1", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"alpha0", ",", "0.216", ",", "\"\<alpha0\>\""}], "}"}], ",", 
+     " ", "0.0001", ",", "5", ",", ".001", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"beta", ",", "0.2", ",", "\"\<beta\>\""}], "}"}], ",", " ", 
+     "0.0001", ",", "5", ",", ".001", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<initial concentration\>\"", ",", "Bold"}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"P10", ",", "0", ",", "\"\<Lacl1\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"P20", ",", "0", ",", "\"\<TetR2\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"P30", ",", "0", ",", "\"\<Cl3\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M10", ",", "0", ",", "\"\<mRNALacl1\>\""}], "}"}], ",", "0", 
+     ",", "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M20", ",", "30", ",", "\"\<mRNATetR2\>\""}], "}"}], ",", "0", 
+     ",", "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M30", ",", "35", ",", "\"\<mRNACl3\>\""}], "}"}], ",", "0", 
+     ",", "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<Hill function exponent\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", "2", ",", "\"\<\>\""}], "}"}], ",", "0", ",", "10", 
+     ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.748797365079194*^9, 3.748797366849388*^9}, {
+   3.748797442802662*^9, 3.7487974643369713`*^9}, {3.7487975507151747`*^9, 
+   3.748797756598847*^9}, {3.7487981326285543`*^9, 3.748798214239902*^9}, {
+   3.748798248073838*^9, 3.748798266780531*^9}, {3.748798309917742*^9, 
+   3.748798344272801*^9}, {3.748798400639975*^9, 3.7487984083973923`*^9}, {
+   3.7487984800682573`*^9, 3.74879849531089*^9}, {3.748798629353778*^9, 
+   3.7487986383211517`*^9}, {3.748798674934992*^9, 3.748798675307863*^9}, {
+   3.748798991619681*^9, 3.7487989918065023`*^9}, {3.748800184125394*^9, 
+   3.7488001867541447`*^9}, {3.748878838586564*^9, 3.748878838879423*^9}, 
+   3.748879574023934*^9, {3.7489109234228973`*^9, 3.748910925805415*^9}, {
+   3.748911004117464*^9, 3.748911041473216*^9}, {3.7489114659003057`*^9, 
+   3.7489114731645813`*^9}, {3.748911524842888*^9, 3.7489115570845337`*^9}, {
+   3.748911663814497*^9, 3.748911679633009*^9}, {3.748911726919406*^9, 
+   3.748911744061008*^9}, {3.748911941250766*^9, 3.748912121663954*^9}, {
+   3.7489121773159523`*^9, 3.74891222603279*^9}, 3.748912640859861*^9, {
+   3.7489126902488422`*^9, 3.748912702886878*^9}, {3.748912910773982*^9, 
+   3.748912928147071*^9}, {3.748913365942816*^9, 3.7489133878600683`*^9}, {
+   3.7489135622568407`*^9, 3.7489136096890297`*^9}, {3.7489136408311777`*^9, 
+   3.748913641169354*^9}, {3.7489137045927277`*^9, 3.748913802389638*^9}, {
+   3.748913880949349*^9, 3.748913881155066*^9}, 3.748914047076182*^9, {
+   3.748914092179249*^9, 3.748914166613402*^9}, {3.7489143835590067`*^9, 
+   3.7489144061082983`*^9}, {3.748914468691041*^9, 3.7489146122321978`*^9}, {
+   3.7489146466850777`*^9, 3.748914653116596*^9}, {3.748914817209813*^9, 
+   3.748914840711467*^9}, {3.748914875448287*^9, 3.748914875670678*^9}, {
+   3.7489149292058773`*^9, 3.748914933868807*^9}, {3.7489149952546587`*^9, 
+   3.748915031412477*^9}, {3.748916509663213*^9, 3.7489165379451227`*^9}, {
+   3.748916646960994*^9, 3.748916714462212*^9}, {3.7489167697509613`*^9, 
+   3.748916805893664*^9}, {3.748916881897694*^9, 3.748916957046556*^9}, {
+   3.748917006529942*^9, 3.748917058909285*^9}, {3.748917578039608*^9, 
+   3.748917652590818*^9}, {3.748918467986547*^9, 3.7489184711284857`*^9}, {
+   3.748918561098116*^9, 3.748918582832265*^9}, {3.748918614824223*^9, 
+   3.748918631273637*^9}, {3.74891870879652*^9, 3.748918760755457*^9}, {
+   3.748918836482712*^9, 3.748918939597967*^9}, {3.74891897359868*^9, 
+   3.748919032277426*^9}, {3.748919091704924*^9, 3.748919092220354*^9}, 
+   3.748919542437195*^9, {3.748952639291531*^9, 3.748952664067691*^9}, {
+   3.748952760804977*^9, 3.74895280809586*^9}, {3.748952851627838*^9, 
+   3.748952869738782*^9}, {3.7489529005810223`*^9, 3.748952936831726*^9}, {
+   3.748952989359489*^9, 3.7489529899850283`*^9}, {3.748953023236725*^9, 
+   3.74895302572223*^9}, {3.748953182305884*^9, 3.7489531885833063`*^9}, {
+   3.74895326376363*^9, 3.748953317996613*^9}, 3.74895335306492*^9, {
+   3.748953562613749*^9, 3.748953602765656*^9}, {3.748953790825152*^9, 
+   3.748953793668824*^9}, {3.748953829321023*^9, 3.748953873635289*^9}, {
+   3.748953906530572*^9, 3.7489540154675417`*^9}, {3.748954279835717*^9, 
+   3.748954324177807*^9}, {3.7489544227652607`*^9, 3.74895445775318*^9}, {
+   3.748954495096043*^9, 3.7489545174384823`*^9}, {3.749212494082017*^9, 
+   3.7492124978871613`*^9}, {3.7492125422566233`*^9, 3.749212555428249*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 
+    224.30010000000001`, $CellContext`alpha0$$ = 0.216, $CellContext`beta$$ = 
+    0.2, $CellContext`M10$$ = 0, $CellContext`M20$$ = 30, $CellContext`M30$$ =
+     35, $CellContext`n$$ = 2, $CellContext`P10$$ = 0, $CellContext`P20$$ = 
+    0, $CellContext`P30$$ = 0, $CellContext`plotNumber$$ = 
+    "plot1", $CellContext`totaltime$$ = 346.0207612456747, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`plotNumber$$], "plot1", "plot"}, {
+      "plot1" -> "time", "plot" -> "phase space"}}, {{
+       Hold[$CellContext`totaltime$$], 346.0207612456747, "maxtime"}, 0.0001, 
+      5000, 0.01}, {
+      Hold["parameters"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`alpha$$], 216, "alpha"}, 0.0001, 400., 0.1}, {{
+       Hold[$CellContext`alpha0$$], 0.216, "alpha0"}, 0.0001, 5, 0.001}, {{
+       Hold[$CellContext`beta$$], 0.2, "beta"}, 0.0001, 5, 0.001}, {
+      Hold[
+       Style["initial concentration", Bold]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`P10$$], 0, "Lacl1"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`P20$$], 0, "TetR2"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`P30$$], 0, "Cl3"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`M10$$], 0, "mRNALacl1"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`M20$$], 30, "mRNATetR2"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`M30$$], 35, "mRNACl3"}, 0, 400, 0.01}, {
+      Hold["Hill function exponent"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`n$$], 2, ""}, 0, 10, 0.01}}, Typeset`size$$ = {
+    1000., {298., 302.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`plotNumber$8288$$ = 
+    False, $CellContext`totaltime$8289$$ = 0, $CellContext`alpha$8290$$ = 
+    0, $CellContext`alpha0$8291$$ = 0, $CellContext`beta$8292$$ = 
+    0, $CellContext`P10$8293$$ = 0, $CellContext`P20$8294$$ = 
+    0, $CellContext`P30$8295$$ = 0, $CellContext`M10$8296$$ = 
+    0, $CellContext`M20$8297$$ = 0, $CellContext`M30$8298$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 216, $CellContext`alpha0$$ = 
+        0.216, $CellContext`beta$$ = 0.2, $CellContext`M10$$ = 
+        0, $CellContext`M20$$ = 30, $CellContext`M30$$ = 35, $CellContext`n$$ = 
+        2, $CellContext`P10$$ = 0, $CellContext`P20$$ = 0, $CellContext`P30$$ = 
+        0, $CellContext`plotNumber$$ = "plot1", $CellContext`totaltime$$ = 
+        346.0207612456747}, "ControllerVariables" :> {
+        Hold[$CellContext`plotNumber$$, $CellContext`plotNumber$8288$$, 
+         False], 
+        Hold[$CellContext`totaltime$$, $CellContext`totaltime$8289$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$8290$$, 0], 
+        Hold[$CellContext`alpha0$$, $CellContext`alpha0$8291$$, 0], 
+        Hold[$CellContext`beta$$, $CellContext`beta$8292$$, 0], 
+        Hold[$CellContext`P10$$, $CellContext`P10$8293$$, 0], 
+        Hold[$CellContext`P20$$, $CellContext`P20$8294$$, 0], 
+        Hold[$CellContext`P30$$, $CellContext`P30$8295$$, 0], 
+        Hold[$CellContext`M10$$, $CellContext`M10$8296$$, 0], 
+        Hold[$CellContext`M20$$, $CellContext`M20$8297$$, 0], 
+        Hold[$CellContext`M30$$, $CellContext`M30$8298$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`s$}, $CellContext`s$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`m1][$CellContext`t] == \
+-$CellContext`m1[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`p3[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`m2][$CellContext`t] == \
+-$CellContext`m2[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`p1[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`m3][$CellContext`t] == \
+-$CellContext`m3[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`p2[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`p1][$CellContext`t] == (-$CellContext`beta$$) \
+($CellContext`p1[$CellContext`t] - $CellContext`m1[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`p2][$CellContext`t] == (-$CellContext`beta$$) \
+($CellContext`p2[$CellContext`t] - $CellContext`m2[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`p3][$CellContext`t] == (-$CellContext`beta$$) \
+($CellContext`p3[$CellContext`t] - $CellContext`m3[$CellContext`t]), \
+$CellContext`m1[0] == $CellContext`M10$$, $CellContext`m2[
+             0] == $CellContext`M20$$, $CellContext`m3[
+             0] == $CellContext`M30$$, $CellContext`p1[
+             0] == $CellContext`P10$$, $CellContext`p2[
+             0] == $CellContext`P20$$, $CellContext`p3[
+             0] == $CellContext`P30$$}, {
+            $CellContext`m1[$CellContext`t], 
+            $CellContext`m2[$CellContext`t], 
+            $CellContext`m3[$CellContext`t], 
+            $CellContext`p1[$CellContext`t], 
+            $CellContext`p2[$CellContext`t], 
+            $CellContext`p3[$CellContext`t]}, {$CellContext`t, 
+            0, $CellContext`totaltime$$}]; 
+        Switch[$CellContext`plotNumber$$, "plot1", 
+          Plot[{
+            Evaluate[
+             ReplaceAll[$CellContext`p1[$CellContext`t] 40, $CellContext`s$]], 
+            Evaluate[
+             ReplaceAll[$CellContext`p2[$CellContext`t] 40, $CellContext`s$]], 
+            Evaluate[
+             
+             ReplaceAll[$CellContext`p3[$CellContext`t] 
+              40, $CellContext`s$]]}, {$CellContext`t, 
+            0, $CellContext`totaltime$$}, 
+           PlotRange -> {{0, $CellContext`totaltime$$}, {0, 6000}}, 
+           PlotStyle -> {{Thick, Red}, {Thick, Orange}, {Thick, Blue}}, Frame -> 
+           True, FrameLabel -> {
+             Style["time(min)", 20], 
+             Style[
+             "Proteins per cell (\!\(\*SubscriptBox[\(Lacl\), \
+\(\(1\)\(,\)\(\\ \)\)]\)\!\(\*SubscriptBox[\(TetR\), \
+\(2\)]\),\!\(\*SubscriptBox[\(Cl\), \(3\)]\))", 20]}, 
+           FrameTicks -> {Automatic, {
+              
+              Map[{#, 2.89 #}& , {
+               0, $CellContext`totaltime$$/2, $CellContext`totaltime$$}], 
+              Automatic}}, ImageSize -> {1000, 600}], "plot", 
+          ParametricPlot3D[
+           Evaluate[
+            ReplaceAll[{
+              $CellContext`p1[$CellContext`t], 
+              $CellContext`p2[$CellContext`t], 
+              $CellContext`p3[$CellContext`t]}, $CellContext`s$]], \
+{$CellContext`t, 0, $CellContext`totaltime$$}, PlotRange -> All, 
+           AxesLabel -> {
+            "\!\(\*SubscriptBox[\(Lacl\), \(\(1\)\(,\)\(\\ \)\)]\)", 
+             "\!\(\*SubscriptBox[\(TetR\), \(2\)]\)", 
+             "\!\(\*SubscriptBox[\(Cl\), \(3\)]\)"}, 
+           ViewPoint -> {100, 100, 100}, PlotStyle -> {{Thick, Red}}, 
+           ImageSize -> {600, 600}, ImagePadding -> 35]]], 
+      "Specifications" :> {{{$CellContext`plotNumber$$, "plot1", "plot"}, {
+         "plot1" -> "time", "plot" -> 
+          "phase space"}}, {{$CellContext`totaltime$$, 346.0207612456747, 
+          "maxtime"}, 0.0001, 5000, 0.01, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, Delimiter, 
+        "parameters", {{$CellContext`alpha$$, 216, "alpha"}, 0.0001, 400., 
+         0.1, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`alpha0$$, 0.216, "alpha0"}, 0.0001, 5, 
+         0.001, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`beta$$, 0.2, "beta"}, 0.0001, 5, 0.001, 
+         ImageSize -> Tiny, Appearance -> "Labeled"}, Delimiter, 
+        Style[
+        "initial concentration", Bold], {{$CellContext`P10$$, 0, "Lacl1"}, 0, 
+         400, 0.01, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`P20$$, 0, "TetR2"}, 0, 400, 0.01, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`P30$$, 0, "Cl3"}, 0, 400, 0.01, ImageSize -> T\
+iny, Appearance -> "Labeled"}, {{$CellContext`M10$$, 0, "mRNALacl1"}, 0, 400, 
+         0.01, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`M20$$, 30, "mRNATetR2"}, 0, 400, 0.01, 
+         ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`M30$$, 35, "mRNACl3"}, 0, 400, 0.01, 
+         ImageSize -> Tiny, Appearance -> "Labeled"}, Delimiter, 
+        "Hill function exponent", {{$CellContext`n$$, 2, ""}, 0, 10, 0.01, 
+         ImageSize -> Tiny, Appearance -> "Labeled"}}, 
+      "Options" :> {ControlPlacement -> Left}, "DefaultOptions" :> {}],
+     ImageSizeCache->{1227., {327., 333.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.748797368797782*^9, 3.7487982235969257`*^9, 3.748798269938942*^9, 
+   3.748798347103167*^9, 3.74879841019436*^9, {3.748798481446755*^9, 
+   3.748798496188891*^9}, 3.7487986440908833`*^9, 3.748798677699244*^9, 
+   3.748798992994974*^9, 3.7488001936115294`*^9, 3.74887890416542*^9, 
+   3.74887957713529*^9, 3.74891092728513*^9, 3.748911015462159*^9, 
+   3.7489110479337273`*^9, 3.748911474707247*^9, 3.7489115583155746`*^9, 
+   3.7489116973500633`*^9, {3.748911731299859*^9, 3.748911745200267*^9}, {
+   3.74891199729852*^9, 3.7489120204058447`*^9}, {3.748912058552586*^9, 
+   3.7489121246433287`*^9}, {3.7489121786256723`*^9, 3.748912227129467*^9}, 
+   3.748912503409581*^9, 3.74891270481968*^9, 3.748912932510188*^9, 
+   3.748913389474822*^9, {3.748913564536622*^9, 3.7489136108662663`*^9}, 
+   3.748913643325213*^9, {3.7489137084810762`*^9, 3.7489138033336897`*^9}, 
+   3.74891388897046*^9, {3.748914095027787*^9, 3.748914124234971*^9}, 
+   3.748914168111024*^9, {3.748914452731803*^9, 3.7489145062907553`*^9}, {
+   3.748914538342647*^9, 3.748914612941596*^9}, {3.748914648672673*^9, 
+   3.748914654991682*^9}, 3.748914843533204*^9, 3.74891487651832*^9, 
+   3.7489149361973352`*^9, {3.748915017866156*^9, 3.748915032638781*^9}, {
+   3.74891651885345*^9, 3.748916538875671*^9}, {3.748916652006988*^9, 
+   3.748916716965475*^9}, {3.7489167708752117`*^9, 3.7489168072714033`*^9}, {
+   3.7489169055280113`*^9, 3.74891695833709*^9}, {3.748917008047635*^9, 
+   3.748917059926729*^9}, 3.748918474787257*^9, {3.748918889888406*^9, 
+   3.74891894032689*^9}, {3.748919007507956*^9, 3.748919033394638*^9}, 
+   3.748919093375231*^9, 3.748919242373721*^9, 3.748919548529035*^9, 
+   3.74891978437117*^9, 3.74891996879388*^9, 3.7489526803698263`*^9, {
+   3.748952750154307*^9, 3.748952770930254*^9}, 3.748952944517262*^9, 
+   3.748952993244713*^9, 3.7489530275704327`*^9, 3.748953467885453*^9, 
+   3.748953582554476*^9, 3.7489536589971657`*^9, {3.748953931830955*^9, 
+   3.748953950625106*^9}, 3.7489540171485167`*^9, 3.7489541437230177`*^9, {
+   3.748954287749506*^9, 3.748954306640023*^9}, 3.748954340166842*^9, 
+   3.748954431842929*^9, 3.74895448325231*^9, 3.7489545254115458`*^9, 
+   3.7489557416540947`*^9, 3.748955919000856*^9, 3.74921250579806*^9, 
+   3.749212558029708*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7489195364658813`*^9, 3.748919536484095*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.74891659251422*^9, 3.7489165939548893`*^9}, 
+   3.74891953434895*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.748919532645149*^9, 3.748919532651936*^9}}]
+},
+WindowSize->{974, 858},
+WindowMargins->{{41, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 16423, 370, 1061, "Input"],
+Cell[17006, 394, 11823, 208, 711, "Output"]
+}, Open  ]],
+Cell[28844, 605, 94, 1, 32, "Input"],
+Cell[28941, 608, 118, 2, 32, "Input"],
+Cell[29062, 612, 92, 1, 32, "Input"]
+}
+]
+*)
+

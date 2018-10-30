@@ -1,0 +1,677 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29408,        669]
+NotebookOptionsPosition[     29069,        652]
+NotebookOutlinePosition[     29429,        668]
+CellTagsIndexPosition[     29386,        665]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "s", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"s", "=", 
+       RowBox[{"NDSolve", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"(*", 
+           RowBox[{"protein", " ", "and", " ", "mrna", " ", "system"}], 
+           "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"m1", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"m1", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"p3", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"m2", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"m2", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"p1", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"m3", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"m3", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"p2", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"p1", "'"}], "[", "t", "]"}], "\[Equal]", 
+            RowBox[{
+             RowBox[{"-", "beta"}], " ", "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"p1", "[", "t", "]"}], "-", 
+               RowBox[{"m1", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"p2", "'"}], "[", "t", "]"}], "\[Equal]", 
+            RowBox[{
+             RowBox[{"-", "beta"}], "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"p2", "[", "t", "]"}], "-", 
+               RowBox[{"m2", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"p3", "'"}], "[", "t", "]"}], "\[Equal]", 
+            RowBox[{
+             RowBox[{"-", "beta"}], "*", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"p3", "[", "t", "]"}], "-", 
+               RowBox[{"m3", "[", "t", "]"}]}], ")"}]}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{"protein", " ", "only", " ", "system"}], "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"xp1", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"xp1", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"xp2", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"xp2", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"xp2", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"xp3", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"xp3", "'"}], "[", "t", "]"}], "==", 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"xp3", "[", "t", "]"}]}], "+", 
+             RowBox[{"(", 
+              RowBox[{"alpha", "/", 
+               RowBox[{"(", 
+                RowBox[{"1", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"xp1", "[", "t", "]"}], ")"}], "^", "n"}]}], 
+                ")"}]}], ")"}], "+", "alpha0"}]}], ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+            "initail", " ", "value", " ", "of", " ", "protein", " ", "and", 
+             " ", "mrna", " ", "system"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"m1", "[", "0", "]"}], "\[Equal]", "M10"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"m2", "[", "0", "]"}], "\[Equal]", "M20"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"m3", "[", "0", "]"}], "\[Equal]", "M30"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p1", "[", "0", "]"}], "\[Equal]", "P10"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p2", "[", "0", "]"}], "\[Equal]", "P20"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p3", "[", "0", "]"}], "\[Equal]", "P30"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", 
+            RowBox[{
+             RowBox[{
+             "initail", " ", "value", " ", "of", " ", "protein", " ", "only", 
+              " ", "system"}], ",", " ", 
+             RowBox[{
+             "same", " ", "as", " ", "protein", " ", "and", " ", "mrna", " ", 
+              "system"}]}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"xp1", "[", "0", "]"}], "\[Equal]", "P10"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"xp2", "[", "0", "]"}], "\[Equal]", "P20"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"xp3", "[", "0", "]"}], "\[Equal]", "P30"}]}], "}"}], ",",
+          "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"m1", "[", "t", "]"}], ",", 
+           RowBox[{"m2", "[", "t", "]"}], ",", 
+           RowBox[{"m3", "[", "t", "]"}], ",", 
+           RowBox[{"p1", "[", "t", "]"}], ",", 
+           RowBox[{"p2", "[", "t", "]"}], ",", 
+           RowBox[{"p3", "[", "t", "]"}], ",", 
+           RowBox[{"xp1", "[", "t", "]"}], ",", 
+           RowBox[{"xp2", "[", "t", "]"}], ",", 
+           RowBox[{"xp3", "[", "t", "]"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "totaltime"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"TrueQ", "[", "pp", "]"}], ",", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"p1", "[", "t", "]"}], "/.", "s"}], "]"}], ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"p2", "[", "t", "]"}], "/.", "s"}], "]"}], ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"p3", "[", "t", "]"}], "/.", "s"}], "]"}], ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"xp1", "[", "t", "]"}], "/.", "s"}], "]"}], ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"xp2", "[", "t", "]"}], "/.", "s"}], "]"}], ",", 
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"xp3", "[", "t", "]"}], "/.", "s"}], "]"}]}], "}"}], 
+          ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "totaltime"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Red"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Green"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Orange"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Cyan"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Brown"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Black"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Green"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Orange"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Yellow"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+          RowBox[{"FrameLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"\"\<time\>\"", ",", 
+             RowBox[{"Row", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<repressor concentrations (\>\"", ",", 
+                SubscriptBox[
+                 RowBox[{"Style", "[", 
+                  RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], "1"], ",", 
+                "\"\<, \>\"", ",", " ", 
+                SubscriptBox[
+                 RowBox[{"Style", "[", 
+                  RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], "2"], ",", 
+                "\"\<, \>\"", ",", 
+                SubscriptBox[
+                 RowBox[{"Style", "[", 
+                  RowBox[{"\"\<x\>\"", ",", "Italic"}], "]"}], "3"], ",", 
+                "\"\<)\>\""}], "}"}], "]"}]}], "}"}]}], ",", 
+          RowBox[{"FrameTicks", "\[Rule]", "Automatic"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"600", ",", "600"}], "}"}]}]}], "]"}], " ", ",", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"ParametricPlot3D", "[", 
+         RowBox[{
+          RowBox[{"Evaluate", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"p1", "[", "t", "]"}], ",", 
+              RowBox[{"p2", "[", "t", "]"}], ",", 
+              RowBox[{"p3", "[", "t", "]"}]}], "}"}], "/.", "s"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "totaltime"}], "}"}], ",", 
+          RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+          RowBox[{"AxesLabel", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<\!\(\*SubscriptBox[\(x\), \(1\)]\)\>\"", ",", 
+             "\"\<\!\(\*SubscriptBox[\(x\), \(2\)]\)\>\"", ",", 
+             "\"\<\!\(\*SubscriptBox[\(x\), \(3\)]\)\>\""}], "}"}]}], ",", 
+          RowBox[{"ViewPoint", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"100", ",", "100", ",", "100"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Red"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Blue"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Magenta"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Cyan"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Brown"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Black"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Green"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Thick", ",", "Orange"}], "}"}]}], "}"}]}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"400", ",", "400"}], "}"}]}], ",", 
+          RowBox[{"ImagePadding", "\[Rule]", "35"}]}], "]"}]}], "]"}]}]}], 
+    "]"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pp", ",", "True", ",", "\"\<\>\""}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"False", "\[Rule]", "\"\<phase space\>\""}], ",", 
+       RowBox[{"True", "\[Rule]", "\"\<time\>\""}]}], "}"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"totaltime", ",", "200", ",", "\"\<duration\>\""}], "}"}], ",", 
+     " ", "0.0001", ",", "5000", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<production rate\\ndivided by\\ndegradation rate\>\"", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"alpha", ",", "216", ",", "\"\<\>\""}], "}"}], ",", " ", 
+     "0.0001", ",", "400.0", ",", ".1", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"alpha0", ",", "0.216", ",", "\"\<\>\""}], "}"}], ",", " ", 
+     "0.0001", ",", "5", ",", ".001", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"beta", ",", "0.2", ",", "\"\<\>\""}], "}"}], ",", " ", 
+     "0.0001", ",", "5", ",", ".001", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<repressor initial concentration\>\"", ",", "Bold"}], "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"P10", ",", "10", ",", "\"\<1\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"P20", ",", "10", ",", "\"\<2\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"P30", ",", "10", ",", "\"\<3\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M10", ",", "100", ",", "\"\<m1\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M20", ",", "80", ",", "\"\<m2\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"M30", ",", "50", ",", "\"\<m3\>\""}], "}"}], ",", "0", ",", 
+     "400", ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", "Delimiter", ",", "\[IndentingNewLine]", 
+   "\"\<Hill function exponent\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", "2", ",", "\"\<\>\""}], "}"}], ",", "0", ",", "10", 
+     ",", ".01", ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Tiny"}], ",", 
+     RowBox[{"Appearance", "\[Rule]", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ControlPlacement", "\[Rule]", "Left"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.748878627309507*^9, 3.7488788110089817`*^9}, {
+   3.748878988706399*^9, 3.748879010508252*^9}, {3.748879059488265*^9, 
+   3.748879059702971*^9}, {3.748879186516464*^9, 3.7488792048174686`*^9}, {
+   3.748879249636814*^9, 3.748879268760029*^9}, {3.7488794812626743`*^9, 
+   3.748879501802444*^9}, 3.748879594613072*^9, {3.748880582245884*^9, 
+   3.748880591891287*^9}, {3.748881366042733*^9, 3.7488813697272778`*^9}, {
+   3.748881424158822*^9, 3.748881432071965*^9}, {3.7488816897920923`*^9, 
+   3.7488816984293823`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`alpha$$ = 216, $CellContext`alpha0$$ = 
+    0.216, $CellContext`beta$$ = 0.2, $CellContext`M10$$ = 
+    100, $CellContext`M20$$ = 80, $CellContext`M30$$ = 50, $CellContext`n$$ = 
+    2, $CellContext`P10$$ = 10, $CellContext`P20$$ = 10, $CellContext`P30$$ = 
+    10, $CellContext`pp$$ = True, $CellContext`totaltime$$ = 200, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pp$$], True, ""}, {
+      False -> "phase space", True -> "time"}}, {{
+       Hold[$CellContext`totaltime$$], 200, "duration"}, 0.0001, 5000, 0.01}, {
+      Hold["production rate\ndivided by\ndegradation rate"], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`alpha$$], 216, ""}, 0.0001, 400., 0.1}, {{
+       Hold[$CellContext`alpha0$$], 0.216, ""}, 0.0001, 5, 0.001}, {{
+       Hold[$CellContext`beta$$], 0.2, ""}, 0.0001, 5, 0.001}, {
+      Hold[
+       Style["repressor initial concentration", Bold]], 
+      Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`P10$$], 10, "1"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`P20$$], 10, "2"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`P30$$], 10, "3"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`M10$$], 100, "m1"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`M20$$], 80, "m2"}, 0, 400, 0.01}, {{
+       Hold[$CellContext`M30$$], 50, "m3"}, 0, 400, 0.01}, {
+      Hold["Hill function exponent"], Manipulate`Dump`ThisIsNotAControl}, {{
+       Hold[$CellContext`n$$], 2, ""}, 0, 10, 0.01}}, Typeset`size$$ = {
+    600., {298., 302.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`pp$17005$$ = 
+    False, $CellContext`totaltime$17006$$ = 0, $CellContext`alpha$17007$$ = 
+    0, $CellContext`alpha0$17008$$ = 0, $CellContext`beta$17009$$ = 
+    0, $CellContext`P10$17010$$ = 0, $CellContext`P20$17011$$ = 
+    0, $CellContext`P30$17012$$ = 0, $CellContext`M10$17013$$ = 
+    0, $CellContext`M20$17014$$ = 0, $CellContext`M30$17015$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`alpha$$ = 216, $CellContext`alpha0$$ = 
+        0.216, $CellContext`beta$$ = 0.2, $CellContext`M10$$ = 
+        100, $CellContext`M20$$ = 80, $CellContext`M30$$ = 
+        50, $CellContext`n$$ = 2, $CellContext`P10$$ = 10, $CellContext`P20$$ = 
+        10, $CellContext`P30$$ = 10, $CellContext`pp$$ = 
+        True, $CellContext`totaltime$$ = 200}, "ControllerVariables" :> {
+        Hold[$CellContext`pp$$, $CellContext`pp$17005$$, False], 
+        Hold[$CellContext`totaltime$$, $CellContext`totaltime$17006$$, 0], 
+        Hold[$CellContext`alpha$$, $CellContext`alpha$17007$$, 0], 
+        Hold[$CellContext`alpha0$$, $CellContext`alpha0$17008$$, 0], 
+        Hold[$CellContext`beta$$, $CellContext`beta$17009$$, 0], 
+        Hold[$CellContext`P10$$, $CellContext`P10$17010$$, 0], 
+        Hold[$CellContext`P20$$, $CellContext`P20$17011$$, 0], 
+        Hold[$CellContext`P30$$, $CellContext`P30$17012$$, 0], 
+        Hold[$CellContext`M10$$, $CellContext`M10$17013$$, 0], 
+        Hold[$CellContext`M20$$, $CellContext`M20$17014$$, 0], 
+        Hold[$CellContext`M30$$, $CellContext`M30$17015$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Module[{$CellContext`s$}, $CellContext`s$ = 
+         NDSolve[{
+           Derivative[
+             1][$CellContext`m1][$CellContext`t] == \
+-$CellContext`m1[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`p3[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`m2][$CellContext`t] == \
+-$CellContext`m2[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`p1[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`m3][$CellContext`t] == \
+-$CellContext`m3[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`p2[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`p1][$CellContext`t] == (-$CellContext`beta$$) \
+($CellContext`p1[$CellContext`t] - $CellContext`m1[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`p2][$CellContext`t] == (-$CellContext`beta$$) \
+($CellContext`p2[$CellContext`t] - $CellContext`m2[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`p3][$CellContext`t] == (-$CellContext`beta$$) \
+($CellContext`p3[$CellContext`t] - $CellContext`m3[$CellContext`t]), 
+            Derivative[
+             1][$CellContext`xp1][$CellContext`t] == \
+-$CellContext`xp1[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`xp2[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`xp2][$CellContext`t] == \
+-$CellContext`xp2[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`xp3[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, 
+            Derivative[
+             1][$CellContext`xp3][$CellContext`t] == \
+-$CellContext`xp3[$CellContext`t] + $CellContext`alpha$$/(
+              1 + $CellContext`xp1[$CellContext`t]^$CellContext`n$$) + \
+$CellContext`alpha0$$, $CellContext`m1[
+             0] == $CellContext`M10$$, $CellContext`m2[
+             0] == $CellContext`M20$$, $CellContext`m3[
+             0] == $CellContext`M30$$, $CellContext`p1[
+             0] == $CellContext`P10$$, $CellContext`p2[
+             0] == $CellContext`P20$$, $CellContext`p3[
+             0] == $CellContext`P30$$, $CellContext`xp1[
+             0] == $CellContext`P10$$, $CellContext`xp2[
+             0] == $CellContext`P20$$, $CellContext`xp3[
+             0] == $CellContext`P30$$}, {
+            $CellContext`m1[$CellContext`t], 
+            $CellContext`m2[$CellContext`t], 
+            $CellContext`m3[$CellContext`t], 
+            $CellContext`p1[$CellContext`t], 
+            $CellContext`p2[$CellContext`t], 
+            $CellContext`p3[$CellContext`t], 
+            $CellContext`xp1[$CellContext`t], 
+            $CellContext`xp2[$CellContext`t], 
+            $CellContext`xp3[$CellContext`t]}, {$CellContext`t, 
+            0, $CellContext`totaltime$$}]; If[
+          TrueQ[$CellContext`pp$$], 
+          Plot[{
+            Evaluate[
+             ReplaceAll[
+              $CellContext`p1[$CellContext`t], $CellContext`s$]], 
+            Evaluate[
+             ReplaceAll[
+              $CellContext`p2[$CellContext`t], $CellContext`s$]], 
+            Evaluate[
+             ReplaceAll[
+              $CellContext`p3[$CellContext`t], $CellContext`s$]], 
+            Evaluate[
+             ReplaceAll[
+              $CellContext`xp1[$CellContext`t], $CellContext`s$]], 
+            Evaluate[
+             ReplaceAll[
+              $CellContext`xp2[$CellContext`t], $CellContext`s$]], 
+            Evaluate[
+             ReplaceAll[
+              $CellContext`xp3[$CellContext`t], $CellContext`s$]]}, \
+{$CellContext`t, 0, $CellContext`totaltime$$}, PlotRange -> All, 
+           PlotStyle -> {{Thick, Red}, {Thick, Green}, {Thick, Orange}, {
+             Thick, Cyan}, {Thick, Brown}, {Thick, Black}, {Thick, Green}, {
+             Thick, Orange}, {Thick, Yellow}}, Frame -> True, 
+           FrameLabel -> {"time", 
+             Row[{"repressor concentrations (", 
+               Subscript[
+                Style["x", Italic], 1], ", ", 
+               Subscript[
+                Style["x", Italic], 2], ", ", 
+               Subscript[
+                Style["x", Italic], 3], ")"}]}, FrameTicks -> Automatic, 
+           ImageSize -> {600, 600}], 
+          ParametricPlot3D[
+           Evaluate[
+            ReplaceAll[{
+              $CellContext`p1[$CellContext`t], 
+              $CellContext`p2[$CellContext`t], 
+              $CellContext`p3[$CellContext`t]}, $CellContext`s$]], \
+{$CellContext`t, 0, $CellContext`totaltime$$}, PlotRange -> All, AxesLabel -> 
+           {"\!\(\*SubscriptBox[\(x\), \(1\)]\)", 
+             "\!\(\*SubscriptBox[\(x\), \(2\)]\)", 
+             "\!\(\*SubscriptBox[\(x\), \(3\)]\)"}, 
+           ViewPoint -> {100, 100, 100}, 
+           PlotStyle -> {{Thick, Red}, {Thick, Blue}, {Thick, Magenta}, {
+             Thick, Cyan}, {Thick, Brown}, {Thick, Black}, {Thick, Green}, {
+             Thick, Orange}}, ImageSize -> {400, 400}, ImagePadding -> 35]]], 
+      "Specifications" :> {{{$CellContext`pp$$, True, ""}, {
+         False -> "phase space", True -> "time"}}, {{$CellContext`totaltime$$,
+           200, "duration"}, 0.0001, 5000, 0.01, ImageSize -> Tiny, 
+         Appearance -> "Labeled"}, Delimiter, 
+        "production rate\ndivided by\ndegradation rate", \
+{{$CellContext`alpha$$, 216, ""}, 0.0001, 400., 0.1, ImageSize -> Tiny, 
+         Appearance -> "Labeled"}, {{$CellContext`alpha0$$, 0.216, ""}, 
+         0.0001, 5, 0.001, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`beta$$, 0.2, ""}, 0.0001, 5, 0.001, 
+         ImageSize -> Tiny, Appearance -> "Labeled"}, Delimiter, 
+        Style[
+        "repressor initial concentration", 
+         Bold], {{$CellContext`P10$$, 10, "1"}, 0, 400, 0.01, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`P20$$, 10, "2"}, 0, 
+         400, 0.01, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`P30$$, 10, "3"}, 0, 400, 0.01, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`M10$$, 100, "m1"}, 0, 
+         400, 0.01, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`M20$$, 80, "m2"}, 0, 400, 0.01, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`M30$$, 50, "m3"}, 0, 
+         400, 0.01, ImageSize -> Tiny, Appearance -> "Labeled"}, Delimiter, 
+        "Hill function exponent", {{$CellContext`n$$, 2, ""}, 0, 10, 0.01, 
+         ImageSize -> Tiny, Appearance -> "Labeled"}}, 
+      "Options" :> {ControlPlacement -> Left}, "DefaultOptions" :> {}],
+     ImageSizeCache->{807., {327., 333.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.748878532954216*^9, 3.7488790921377573`*^9, 
+  3.7488792173763323`*^9, 3.7488792585106153`*^9, 3.748879350127413*^9, 
+  3.748879503594205*^9, 3.748879598168717*^9, 3.748880593528714*^9, 
+  3.748881383676517*^9, 3.748881433967752*^9, 3.748881700085902*^9, 
+  3.748954194005905*^9}]
+}, Open  ]]
+},
+WindowSize->{1181, 720},
+WindowMargins->{{Automatic, 118}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 17365, 418, 1314, "Input"],
+Cell[17948, 442, 11105, 207, 711, "Output"]
+}, Open  ]]
+}
+]
+*)
+
